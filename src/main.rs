@@ -1,11 +1,12 @@
-use std::{fs, borrow::Borrow};
+use std::{fs};
 fn main() {
-    let file_path="/home/lucy/code/micro/src/words.txt";
+    let file_path="C:\\Users\\octon\\Documents\\git-cloned\\spellchecker\\src\\words.txt";
     let contents = fs::read_to_string(file_path).expect("Should have been able to read the file");
-    let dict: Vec<String>;
-    let mut op=0;
+    let mut dict: Vec<&str>=Vec::new();
     for byte in contents.split_whitespace() {
-        &dict[op] = byte.to_string().borrow();
-        op+=1;
+        dict.push(byte);
+    }
+    for x in &dict {
+        println!("{x}");
     }
 }
