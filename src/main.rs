@@ -1,4 +1,4 @@
-use std::{fs, io::{stdin, stdout, Write}};
+use std::{fs, io::{stdin, stdout, Write}, mem};
 fn main() {
     let file_path="/home/lucy/code/spellchecker/src/words.txt";
     let mut check=String::new();
