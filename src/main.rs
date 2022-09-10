@@ -11,7 +11,7 @@ fn main() {
     if let Some('\r')=check.chars().next_back() {
         check.pop();
     }
-    
+
     //start
     let contents=fs::read_to_string(file_path).expect("Should have been able to read the file");
     let mut dict: Vec<&str>=Vec::new();
