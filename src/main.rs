@@ -17,11 +17,16 @@ fn main() {
     for byte in contents.split_whitespace() {
         dict.push(byte);
     }
-    let index = dict.iter().position(|&a| a == check.to_owned()).unwrap(); //crashes if word doesn't exist
+    let index = dict.iter().position(|&a| a == check.to_owned()); //crashes if word doesn't exist
+
+    if index == None {
+        return;
+    }
+
     for x in &dict {
         println!("{x}");
     }
     println!("{:?}", index);
     println!("{:?}", check);
-    println!("{:?}", dict[index]);
+    println!("{:?}", dict[index.unwrap()]);
 }
