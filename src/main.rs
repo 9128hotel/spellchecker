@@ -1,7 +1,7 @@
 use std::{io::{stdin, stdout, Write}, fs::{File}};
 mod micro;
 fn main() {
-    let mut file = File::open("foo.txt").unwrap();
+    let file = File::open("foo.txt").unwrap();
     let file_path="/home/lucy/code/spellchecker/src/words.txt";
     let mut check=String::new();
     print!("Please enter some text: ");
