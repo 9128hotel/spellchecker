@@ -1,5 +1,7 @@
-use std::{fs, io::{stdin, stdout, Write}};
+use std::{io::{stdin, stdout, Write}, fs::{File}};
+mod micro;
 fn main() {
+    let mut file = File::open("foo.txt").unwrap();
     let file_path="/home/lucy/code/spellchecker/src/words.txt";
     let mut check=String::new();
     print!("Please enter some text: ");
@@ -12,22 +14,5 @@ fn main() {
         check.pop();
     }
 
-    //start
-    let contents=fs::read_to_string(file_path).expect("Should have been able to read the file");
-    let mut dict: Vec<&str>=Vec::new();
-    for byte in contents.split_whitespace() {
-        dict.push(byte);
-    }
-    let index = dict.iter().position(|&a| a == check.to_owned()); //crashes if word doesn't exist
-
-    if index == None {
-        return;
-    }
-
-    for x in &dict {
-        println!("{x}");
-    }
-    println!("{:?}", index);
-    println!("{:?}", check);
-    println!("{:?}", dict[index.unwrap()]);
+    micro::spellcheck(check, file_path, file);
 }
